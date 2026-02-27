@@ -32,36 +32,36 @@ export function Dashboard() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-          <div className="flex items-center justify-between mb-2">
+      <div className="grid md:grid-cols-4 gap-4 mb-6">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+          <div className="flex items-center justify-between mb-1">
             <p className="text-sm text-gray-600">Receipts This Month</p>
-            <FileText className="size-5 text-[#8B4513]" />
+            <FileText className="size-4 text-[#8B4513]" />
           </div>
-          <p className="text-3xl font-bold text-[#8B4513]">{stats.receiptsThisMonth}</p>
+          <p className="text-2xl font-bold text-[#8B4513]">{stats.receiptsThisMonth}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-          <div className="flex items-center justify-between mb-2">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+          <div className="flex items-center justify-between mb-1">
             <p className="text-sm text-gray-600">Tax Credits Saved</p>
-            <TrendingUp className="size-5 text-[#8B4513]" />
+            <TrendingUp className="size-4 text-[#8B4513]" />
           </div>
-          <p className="text-3xl font-bold text-[#8B4513]">{stats.totalSaved}</p>
+          <p className="text-2xl font-bold text-[#8B4513]">{stats.totalSaved}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-          <div className="flex items-center justify-between mb-2">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+          <div className="flex items-center justify-between mb-1">
             <p className="text-sm text-gray-600">Compliance Score</p>
-            <CheckCircle2 className="size-5 text-[#8B4513]" />
+            <CheckCircle2 className="size-4 text-[#8B4513]" />
           </div>
-          <p className="text-3xl font-bold text-[#8B4513]">{stats.complianceScore}%</p>
+          <p className="text-2xl font-bold text-[#8B4513]">{stats.complianceScore}%</p>
           <p className="text-xs text-[#8B4513] mt-1">You're 100% compliant! 🎉</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-          <div className="flex items-center justify-between mb-2">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+          <div className="flex items-center justify-between mb-1">
             <p className="text-sm text-gray-600">Next Deadline</p>
-            <Clock className="size-5 text-[#8B4513]" />
+            <Clock className="size-4 text-[#8B4513]" />
           </div>
           <p className="text-lg font-bold text-[#8B4513]">{stats.nextDeadline}</p>
           <p className="text-xs text-[#8B4513] mt-1">21 days remaining</p>
@@ -69,17 +69,17 @@ export function Dashboard() {
       </div>
 
       {/* Quick Actions */}
-      <Card className="p-6 mb-8 bg-gradient-to-br from-[#8B4513] to-[#8B4513]/90 text-white shadow-2xl shadow-[#8B4513]/20 border border-[#8B4513]/50">
-        <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-        <div className="grid md:grid-cols-3 gap-4">
+      <Card className="p-5 mb-6 bg-gradient-to-br from-[#8B4513] to-[#8B4513]/90 text-white shadow-xl shadow-[#8B4513]/20 border border-[#8B4513]/50">
+        <h2 className="text-lg font-semibold mb-3">Quick Actions</h2>
+        <div className="grid md:grid-cols-3 gap-3">
           <Button
             asChild
             size="lg"
-            className="bg-white text-[#8B4513] hover:bg-[#FFCCBC] h-auto py-6"
+            className="bg-white text-[#8B4513] hover:bg-[#FFCCBC] h-auto py-4"
           >
             <Link to="/upload" className="flex flex-col items-center gap-2">
-              <Upload className="size-8" />
-              <span>Upload Receipts</span>
+              <Upload className="size-6" />
+              <span className="text-sm font-medium">Upload Receipts</span>
             </Link>
           </Button>
 
@@ -87,11 +87,11 @@ export function Dashboard() {
             asChild
             size="lg"
             variant="outline"
-            className="border-white text-[#8B4513] hover:bg-[#FFCCBC] h-auto py-6"
+            className="border-white text-[#8B4513] hover:bg-[#FFCCBC] h-auto py-4"
           >
             <Link to="/preview" className="flex flex-col items-center gap-2">
-              <FileText className="size-8" />
-              <span>View Summaries</span>
+              <FileText className="size-6" />
+              <span className="text-sm font-medium">View Summaries</span>
             </Link>
           </Button>
 
@@ -99,11 +99,11 @@ export function Dashboard() {
             asChild
             size="lg"
             variant="outline"
-            className="border-white text-[#8B4513] hover:bg-[#FFCCBC] h-auto py-6"
+            className="border-white text-[#8B4513] hover:bg-[#FFCCBC] h-auto py-4"
           >
             <Link to="/export" className="flex flex-col items-center gap-2">
-              <Calendar className="size-8" />
-              <span>Generate Report</span>
+              <Calendar className="size-6" />
+              <span className="text-sm font-medium">Generate Report</span>
             </Link>
           </Button>
         </div>

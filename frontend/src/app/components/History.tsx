@@ -105,34 +105,34 @@ export function History() {
       </div>
 
       {/* Stats Overview */}
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+      <div className="grid md:grid-cols-4 gap-4 mb-6">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total Filings</p>
-          <p className="text-3xl font-bold text-[#8B4513]">{totalFilings}</p>
+          <p className="text-2xl font-bold text-[#8B4513]">{totalFilings}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total Receipts</p>
-          <p className="text-3xl font-bold text-[#8B4513]">{totalReceipts}</p>
+          <p className="text-2xl font-bold text-[#8B4513]">{totalReceipts}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total Revenue</p>
-          <p className="text-3xl font-bold text-[#8B4513]">
+          <p className="text-2xl font-bold text-[#8B4513]">
             ₹{(totalRevenue / 1000).toFixed(0)}K
           </p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <Card className="p-4 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total GST</p>
-          <p className="text-3xl font-bold text-[#8B4513]">
+          <p className="text-2xl font-bold text-[#8B4513]">
             ₹{(totalGST / 1000).toFixed(0)}K
           </p>
         </Card>
       </div>
 
       {/* Filters */}
-      <Card className="p-6 mb-8 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
+      <Card className="p-5 mb-6 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
@@ -161,8 +161,8 @@ export function History() {
       </Card>
 
       {/* History Table */}
-      <Card className="p-6 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
-        <h2 className="text-xl font-semibold text-[#8B4513] mb-6">
+      <Card className="p-5 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
+        <h2 className="text-lg font-semibold text-[#8B4513] mb-4">
           Past Filings ({filteredHistory.length})
         </h2>
 
@@ -170,12 +170,12 @@ export function History() {
           {filteredHistory.map((record) => (
             <div
               key={record.id}
-              className="p-6 rounded-xl border border-[#FFCCBC]/50 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all"
+              className="p-4 rounded-xl border border-[#FFCCBC]/50 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all"
             >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="bg-[#8B4513] w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Calendar className="size-6 text-white" />
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div className="flex items-start gap-3">
+                  <div className="bg-[#8B4513] w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="size-5 text-white" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#8B4513] text-lg mb-1">

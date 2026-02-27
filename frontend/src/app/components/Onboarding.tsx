@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
-import { ArrowRight, Building2, User, Mail, Phone } from "lucide-react";
+import { ArrowRight, Building2, User, Mail, Phone, Lock } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -14,6 +14,7 @@ export function Onboarding() {
     ownerName: "",
     email: "",
     phone: "",
+    password: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,76 +36,94 @@ export function Onboarding() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <>
-              <div className="space-y-2">
-                <Label htmlFor="businessName" className="flex items-center gap-2">
-                  <Building2 className="size-4 text-[#8B4513]" />
-                  Business Name
-                </Label>
-                <Input
-                  id="businessName"
-                  value={formData.businessName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, businessName: e.target.value })
-                  }
-                  placeholder="e.g., Sharma Electronics"
-                  required
-                  className="border-[#8B4513]/30 focus:border-[#8B4513]"
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="businessName" className="flex items-center gap-2">
+                <Building2 className="size-4 text-[#8B4513]" />
+                Business Name
+              </Label>
+              <Input
+                id="businessName"
+                value={formData.businessName}
+                onChange={(e) =>
+                  setFormData({ ...formData, businessName: e.target.value })
+                }
+                placeholder="e.g., Sharma Electronics"
+                required
+                className="border-[#8B4513]/30 focus:border-[#8B4513]"
+              />
+            </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="ownerName" className="flex items-center gap-2">
-                  <User className="size-4 text-[#8B4513]" />
-                  Owner Name
-                </Label>
-                <Input
-                  id="ownerName"
-                  value={formData.ownerName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, ownerName: e.target.value })
-                  }
-                  placeholder="e.g., Rajesh Sharma"
-                  required
-                  className="border-[#8B4513]/30 focus:border-[#8B4513]"
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="ownerName" className="flex items-center gap-2">
+                <User className="size-4 text-[#8B4513]" />
+                Owner Name
+              </Label>
+              <Input
+                id="ownerName"
+                value={formData.ownerName}
+                onChange={(e) =>
+                  setFormData({ ...formData, ownerName: e.target.value })
+                }
+                placeholder="e.g., Rajesh Sharma"
+                required
+                className="border-[#8B4513]/30 focus:border-[#8B4513]"
+              />
+            </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="email" className="flex items-center gap-2">
-                  <Mail className="size-4 text-[#8B4513]" />
-                  Email Address
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  placeholder="rajesh@example.com"
-                  required
-                  className="border-[#8B4513]/30 focus:border-[#8B4513]"
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="email" className="flex items-center gap-2">
+                <Mail className="size-4 text-[#8B4513]" />
+                Email Address
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                placeholder="rajesh@example.com"
+                required
+                className="border-[#8B4513]/30 focus:border-[#8B4513]"
+              />
+            </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="flex items-center gap-2">
-                  <Phone className="size-4 text-[#8B4513]" />
-                  Phone Number
-                </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
-                  placeholder="+91 98765 43210"
-                  required
-                  className="border-[#8B4513]/30 focus:border-[#8B4513]"
-                />
-              </div>
-            </>
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="flex items-center gap-2">
+                <Phone className="size-4 text-[#8B4513]" />
+                Phone Number
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+                placeholder="+91 98765 43210"
+                required
+                className="border-[#8B4513]/30 focus:border-[#8B4513]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password" className="flex items-center gap-2">
+                <Lock className="size-4 text-[#8B4513]" />
+                Password
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                placeholder="••••••••"
+                required
+                className="border-[#8B4513]/30 focus:border-[#8B4513]"
+              />
+            </div>
+          </>
 
 
           <div className="flex gap-4">
