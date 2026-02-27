@@ -1,11 +1,40 @@
+# Gstfileer
 
-  # Build TaxFlow Agent MLP
+GST Filing and Management System.
 
-  This is a code bundle for Build TaxFlow Agent MLP. The original project is available at https://www.figma.com/design/ws5f9z7Yy3SpFOXrDRcNrj/Build-TaxFlow-Agent-MLP.
+## Features
+- GST Filing Automation
+- TaxFlow Integration
+- Dashboard for GST status
 
-  ## Running the code
+## Getting Started
 
-  Run `npm i` to install the dependencies.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or pnpm
 
-  Run `npm run dev` to start the development server.
-  
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Fill in the required values in `.env`
+
+### Running the Application
+
+#### Development
+```bash
+npm run dev
+```
+
+#### Server
+```bash
+npm run server
+```
+
+## License
+ISC

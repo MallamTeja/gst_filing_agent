@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { ArrowRight, Building2, User, Mail, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -28,9 +28,6 @@ export function Onboarding() {
       // const response = await fetch('/api/onboarding', {
       //   method: 'POST',
       //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': `Bearer ${process.env.API_KEY}` // LOAD FROM ENV: API_KEY
-      //   },
       //   body: JSON.stringify(formData)
       // });
       localStorage.setItem("taxflow_user", JSON.stringify(formData));
@@ -42,10 +39,10 @@ export function Onboarding() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl p-8 border-2 border-[#FFCCBC] shadow-2xl">
+      <Card className="w-full max-w-2xl p-8 bg-white/80 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10 ring-1 ring-[#8B4513]/5 relative overflow-hidden">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-[#8B4513] mb-2">
-            Welcome to TaxFlow Agent!
+            Welcome to TaxFlow!
           </h1>
           <p className="text-gray-700">Let's set up your account in 2 minutes</p>
         </div>
@@ -165,7 +162,7 @@ export function Onboarding() {
                 </p>
               </div>
 
-              <div className="bg-[#FFCCBC]/30 rounded-lg p-4 border border-[#FFCCBC]">
+              <div className="bg-gradient-to-br from-[#FFCCBC]/40 to-[#FFCCBC]/10 backdrop-blur-sm rounded-xl p-5 border border-[#FFCCBC]/50 shadow-sm">
                 <h3 className="font-semibold text-[#8B4513] mb-2">
                   What happens next?
                 </h3>
@@ -198,6 +195,13 @@ export function Onboarding() {
               <ArrowRight className="ml-2 size-4" />
             </Button>
           </div>
+
+          <p className="mt-8 text-center text-sm text-gray-600">
+            Already have an account?{" "}
+            <Link to="/login" className="text-[#8B4513] font-semibold hover:underline">
+              Login here
+            </Link>
+          </p>
         </form>
       </Card>
     </div>

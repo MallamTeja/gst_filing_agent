@@ -106,24 +106,24 @@ export function History() {
 
       {/* Stats Overview */}
       <div className="grid md:grid-cols-4 gap-6 mb-8">
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-gradient-to-br from-white to-[#FFCCBC]/10">
+        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total Filings</p>
           <p className="text-3xl font-bold text-[#8B4513]">{totalFilings}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#FFCCBC] bg-gradient-to-br from-white to-[#FFCCBC]/10">
+        <Card className="p-6 border-l-4 border-l-[#FFCCBC] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total Receipts</p>
           <p className="text-3xl font-bold text-[#8B4513]">{totalReceipts}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-blue-500 bg-gradient-to-br from-white to-blue-50">
+        <Card className="p-6 border-l-4 border-l-blue-500 bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total Revenue</p>
           <p className="text-3xl font-bold text-blue-600">
             ₹{(totalRevenue / 1000).toFixed(0)}K
           </p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-green-500 bg-gradient-to-br from-white to-green-50">
+        <Card className="p-6 border-l-4 border-l-green-500 bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <p className="text-sm text-gray-600 mb-1">Total GST</p>
           <p className="text-3xl font-bold text-green-600">
             ₹{(totalGST / 1000).toFixed(0)}K
@@ -132,7 +132,7 @@ export function History() {
       </div>
 
       {/* Filters */}
-      <Card className="p-6 mb-8">
+      <Card className="p-6 mb-8 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />
@@ -161,7 +161,7 @@ export function History() {
       </Card>
 
       {/* History Table */}
-      <Card className="p-6">
+      <Card className="p-6 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
         <h2 className="text-xl font-semibold text-[#8B4513] mb-6">
           Past Filings ({filteredHistory.length})
         </h2>
@@ -170,7 +170,7 @@ export function History() {
           {filteredHistory.map((record) => (
             <div
               key={record.id}
-              className="p-6 rounded-lg border-2 border-[#FFCCBC] bg-[#FFCCBC]/5 hover:bg-[#FFCCBC]/20 transition-colors"
+              className="p-6 rounded-xl border border-[#FFCCBC]/50 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-start gap-4">
@@ -241,19 +241,6 @@ export function History() {
         )}
       </Card>
 
-      {/* Archive Info */}
-      <Card className="p-6 mt-8 bg-gradient-to-r from-[#FFCCBC]/30 to-[#FFCCBC]/10 border-2 border-[#FFCCBC]">
-        <div className="flex items-start gap-3">
-          <FileText className="size-6 text-[#8B4513] flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#8B4513] mb-2">Audit-Proof Records</h3>
-            <p className="text-gray-700 text-sm">
-              All your filing records are securely stored and available for download anytime. 
-              We maintain complete audit trails for 7 years as per compliance requirements.
-            </p>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 }

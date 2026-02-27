@@ -19,11 +19,7 @@ export function Dashboard() {
     { date: "Feb 15, 2026", action: "Exported filing documents", status: "completed" },
   ];
 
-  const upcomingDeadlines = [
-    { title: "GST Return Filing", date: "March 20, 2026", daysLeft: 21, type: "urgent" },
-    { title: "TDS Payment", date: "April 7, 2026", daysLeft: 39, type: "normal" },
-    { title: "Quarterly Summary", date: "April 30, 2026", daysLeft: 62, type: "normal" },
-  ];
+
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -37,7 +33,7 @@ export function Dashboard() {
 
       {/* Stats Grid */}
       <div className="grid md:grid-cols-4 gap-6 mb-8">
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-gradient-to-br from-white to-[#FFCCBC]/10">
+        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Receipts This Month</p>
             <FileText className="size-5 text-[#8B4513]" />
@@ -45,7 +41,7 @@ export function Dashboard() {
           <p className="text-3xl font-bold text-[#8B4513]">{stats.receiptsThisMonth}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#FFCCBC] bg-gradient-to-br from-white to-[#FFCCBC]/10">
+        <Card className="p-6 border-l-4 border-l-[#FFCCBC] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Tax Credits Saved</p>
             <TrendingUp className="size-5 text-[#8B4513]" />
@@ -53,7 +49,7 @@ export function Dashboard() {
           <p className="text-3xl font-bold text-[#8B4513]">{stats.totalSaved}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-green-500 bg-gradient-to-br from-white to-green-50">
+        <Card className="p-6 border-l-4 border-l-green-500 bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Compliance Score</p>
             <CheckCircle2 className="size-5 text-green-600" />
@@ -62,7 +58,7 @@ export function Dashboard() {
           <p className="text-xs text-green-600 mt-1">You're 100% compliant! 🎉</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-orange-500 bg-gradient-to-br from-white to-orange-50">
+        <Card className="p-6 border-l-4 border-l-orange-500 bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Next Deadline</p>
             <Clock className="size-5 text-orange-600" />
@@ -73,7 +69,7 @@ export function Dashboard() {
       </div>
 
       {/* Quick Actions */}
-      <Card className="p-6 mb-8 bg-[#8B4513] text-white">
+      <Card className="p-6 mb-8 bg-gradient-to-br from-[#8B4513] to-[#8B4513]/90 text-white shadow-2xl shadow-[#8B4513]/20 border border-[#8B4513]/50">
         <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
         <div className="grid md:grid-cols-3 gap-4">
           <Button
@@ -113,41 +109,7 @@ export function Dashboard() {
         </div>
       </Card>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {/* Upcoming Deadlines */}
-        <Card className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-[#8B4513]">Upcoming Deadlines</h2>
-            <Calendar className="size-5 text-[#8B4513]" />
-          </div>
-          <div className="space-y-4">
-            {upcomingDeadlines.map((deadline, idx) => (
-              <div
-                key={idx}
-                className={`p-4 rounded-lg border-2 ${
-                  deadline.type === "urgent"
-                    ? "border-orange-500 bg-orange-50"
-                    : "border-[#FFCCBC] bg-[#FFCCBC]/20"
-                }`}
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-semibold text-[#8B4513]">{deadline.title}</h3>
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      deadline.type === "urgent"
-                        ? "bg-orange-200 text-orange-800"
-                        : "bg-[#FFCCBC] text-[#8B4513]"
-                    }`}
-                  >
-                    {deadline.daysLeft} days
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600">{deadline.date}</p>
-              </div>
-            ))}
-          </div>
-        </Card>
-
+      <div className="grid grid-cols-1 gap-8">
         {/* Recent Activity */}
         <Card className="p-6">
           <div className="flex items-center justify-between mb-6">
@@ -171,18 +133,6 @@ export function Dashboard() {
         </Card>
       </div>
 
-      {/* Tips Section */}
-      <Card className="p-6 mt-8 bg-gradient-to-r from-[#FFCCBC]/30 to-[#FFCCBC]/10 border-2 border-[#FFCCBC]">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="size-6 text-[#8B4513] flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="font-semibold text-[#8B4513] mb-2">Pro Tip</h3>
-            <p className="text-gray-700">
-              Upload receipts throughout the month instead of all at once. This helps maintain accurate records and makes tax time stress-free! 🌟
-            </p>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 }

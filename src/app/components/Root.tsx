@@ -1,19 +1,19 @@
 import { Outlet, Link, useLocation } from "react-router";
-import { FileText, Home, Upload, History, CreditCard, Menu, X } from "lucide-react";
+import { FileText, Home, Upload, History, Menu, X, User } from "lucide-react";
 import { useState } from "react";
 
 export function Root() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  // Hide nav on landing and onboarding pages
-  const hideNav = location.pathname === "/" || location.pathname === "/onboarding";
+
+  // Hide nav on registration and login pages
+  const hideNav = location.pathname === "/" || location.pathname === "/login";
 
   const navItems = [
     { path: "/dashboard", icon: Home, label: "Dashboard" },
     { path: "/upload", icon: Upload, label: "Upload" },
     { path: "/history", icon: History, label: "History" },
-    { path: "/pricing", icon: CreditCard, label: "Pricing" },
+    { path: "/profile", icon: User, label: "Profile" },
   ];
 
   return (
@@ -24,7 +24,7 @@ export function Root() {
             <div className="flex items-center justify-between h-16">
               <Link to="/dashboard" className="flex items-center gap-2">
                 <FileText className="size-8" />
-                <span className="text-xl font-semibold">TaxFlow Agent</span>
+                <span className="text-xl font-semibold">TaxFlow</span>
               </Link>
 
               {/* Desktop Nav */}
@@ -33,11 +33,10 @@ export function Root() {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                      location.pathname === item.path
-                        ? "bg-white/20"
-                        : "hover:bg-white/10"
-                    }`}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${location.pathname === item.path
+                      ? "bg-white/20"
+                      : "hover:bg-white/10"
+                      }`}
                   >
                     <item.icon className="size-4" />
                     {item.label}
@@ -62,11 +61,10 @@ export function Root() {
                     key={item.path}
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                      location.pathname === item.path
-                        ? "bg-white/20"
-                        : "hover:bg-white/10"
-                    }`}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${location.pathname === item.path
+                      ? "bg-white/20"
+                      : "hover:bg-white/10"
+                      }`}
                   >
                     <item.icon className="size-5" />
                     {item.label}
@@ -77,7 +75,7 @@ export function Root() {
           </div>
         </nav>
       )}
-      
+
       <main>
         <Outlet />
       </main>

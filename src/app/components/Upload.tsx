@@ -60,12 +60,10 @@ export function Upload() {
       if (progress >= 100) clearInterval(interval);
     }, 200);
 
-    // TODO: Upload to server with API_KEY and store in MongoDB
     // const formData = new FormData();
     // selectedFiles.forEach(file => formData.append('receipts', file));
     // await fetch('/api/upload', {
     //   method: 'POST',
-    //   headers: { 'Authorization': `Bearer ${process.env.API_KEY}` },
     //   body: formData
     // });
   };
@@ -93,11 +91,10 @@ export function Upload() {
 
       {/* Upload Area */}
       <Card
-        className={`p-12 mb-8 border-2 border-dashed transition-colors ${
-          isDragging
-            ? "border-[#8B4513] bg-[#FFCCBC]/20"
-            : "border-[#8B4513]/30 hover:border-[#8B4513]"
-        }`}
+        className={`p-12 mb-8 border-2 border-dashed transition-all duration-300 ${isDragging
+          ? "border-[#8B4513] bg-[#FFCCBC]/20 scale-[0.99] shadow-inner"
+          : "border-[#8B4513]/30 hover:border-[#8B4513] hover:shadow-lg bg-white/50 backdrop-blur-sm"
+          }`}
         onDragOver={(e) => {
           e.preventDefault();
           setIsDragging(true);
@@ -164,7 +161,7 @@ export function Upload() {
             {files.map((file) => (
               <div
                 key={file.id}
-                className="flex items-center gap-4 p-4 rounded-lg border border-[#FFCCBC] bg-[#FFCCBC]/10"
+                className="flex items-center gap-4 p-4 rounded-xl border border-[#FFCCBC]/50 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all"
               >
                 {file.preview ? (
                   <img
@@ -209,30 +206,6 @@ export function Upload() {
         </Card>
       )}
 
-      {/* Tips */}
-      {files.length === 0 && (
-        <Card className="p-6 bg-gradient-to-r from-[#FFCCBC]/30 to-[#FFCCBC]/10 border-2 border-[#FFCCBC]">
-          <h3 className="font-semibold text-[#8B4513] mb-4">📸 Tips for Best Results</h3>
-          <ul className="space-y-2 text-gray-700">
-            <li className="flex items-start gap-2">
-              <span className="text-[#8B4513] font-bold">•</span>
-              Ensure receipts are well-lit and all text is clearly visible
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#8B4513] font-bold">•</span>
-              Capture the entire receipt including header and total amounts
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#8B4513] font-bold">•</span>
-              You can upload multiple files at once for batch processing
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#8B4513] font-bold">•</span>
-              Both photos and PDF scans work perfectly
-            </li>
-          </ul>
-        </Card>
-      )}
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { Edit2, Save, CheckCircle2, TrendingUp, FileText, IndianRupee } from "lu
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
-import confetti from "canvas-confetti";
 
 interface ExtractedData {
   id: string;
@@ -20,7 +19,7 @@ interface ExtractedData {
 export function Preview() {
   const navigate = useNavigate();
   const [showConfetti, setShowConfetti] = useState(false);
-  
+
   // Mock extracted data - in production, fetch from MongoDB via MONGODB_URL
   const [extractedData, setExtractedData] = useState<ExtractedData[]>([
     {
@@ -76,13 +75,6 @@ export function Preview() {
   };
 
   const handleGenerateSummary = () => {
-    // Trigger confetti celebration
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#8B4513", "#FFCCBC", "#D2691E"],
-    });
     setShowConfetti(true);
 
     // TODO: Save to MongoDB via MONGODB_URL and process with API_KEY
@@ -90,7 +82,6 @@ export function Preview() {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${process.env.API_KEY}` // LOAD FROM ENV: API_KEY
     //   },
     //   body: JSON.stringify({ data: extractedData })
     // });
@@ -113,7 +104,7 @@ export function Preview() {
 
       {/* Summary Cards */}
       <div className="grid md:grid-cols-3 gap-6 mb-8">
-        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-gradient-to-br from-white to-[#FFCCBC]/10">
+        <Card className="p-6 border-l-4 border-l-[#8B4513] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Total Receipts</p>
             <FileText className="size-5 text-[#8B4513]" />
@@ -121,7 +112,7 @@ export function Preview() {
           <p className="text-3xl font-bold text-[#8B4513]">{extractedData.length}</p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-[#FFCCBC] bg-gradient-to-br from-white to-[#FFCCBC]/10">
+        <Card className="p-6 border-l-4 border-l-[#FFCCBC] bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">Total Amount</p>
             <IndianRupee className="size-5 text-[#8B4513]" />
@@ -131,7 +122,7 @@ export function Preview() {
           </p>
         </Card>
 
-        <Card className="p-6 border-l-4 border-l-green-500 bg-gradient-to-br from-white to-green-50">
+        <Card className="p-6 border-l-4 border-l-green-500 bg-white/80 backdrop-blur-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm text-gray-600">GST Credit</p>
             <TrendingUp className="size-5 text-green-600" />
@@ -143,7 +134,7 @@ export function Preview() {
       </div>
 
       {/* Extracted Data Table */}
-      <Card className="p-6 mb-8">
+      <Card className="p-6 mb-8 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
         <h2 className="text-xl font-semibold text-[#8B4513] mb-6">
           Extracted Details
         </h2>
@@ -152,7 +143,7 @@ export function Preview() {
           {extractedData.map((item) => (
             <div
               key={item.id}
-              className="p-4 rounded-lg border-2 border-[#FFCCBC] bg-[#FFCCBC]/10"
+              className="p-4 rounded-xl border border-[#FFCCBC]/50 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
@@ -267,7 +258,7 @@ export function Preview() {
       </Card>
 
       {/* Summary Total */}
-      <Card className="p-6 mb-8 bg-gradient-to-r from-[#8B4513] to-[#723A0F] text-white">
+      <Card className="p-6 mb-8 bg-gradient-to-r from-[#8B4513] to-[#8B4513]/90 text-white shadow-2xl shadow-[#8B4513]/20 border border-[#8B4513]/50">
         <h2 className="text-xl font-semibold mb-4">Summary Total</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div>

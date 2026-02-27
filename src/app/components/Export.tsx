@@ -2,20 +2,9 @@ import { useState, useEffect } from "react";
 import { Download, FileText, Mail, Share2, CheckCircle2, Printer } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import confetti from "canvas-confetti";
 
 export function Export() {
   const [showSuccess, setShowSuccess] = useState(false);
-
-  useEffect(() => {
-    // Celebrate on page load
-    confetti({
-      particleCount: 150,
-      spread: 100,
-      origin: { y: 0.5 },
-      colors: ["#8B4513", "#FFCCBC", "#D2691E", "#FFE4B5"],
-    });
-  }, []);
 
   const handleDownload = (format: string) => {
     // TODO: Generate document via API with API_KEY
@@ -23,14 +12,13 @@ export function Export() {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${process.env.API_KEY}` // LOAD FROM ENV: API_KEY
     //   },
     //   body: JSON.stringify({ format, month: 'February 2026' })
     // });
-    
+
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 3000);
-    
+
     // Simulate download
     const link = document.createElement("a");
     link.href = "#";
@@ -46,7 +34,7 @@ export function Export() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Success Header */}
-      <Card className="p-8 mb-8 bg-gradient-to-r from-[#FFCCBC] to-[#FFE4B5] border-2 border-[#8B4513]">
+      <Card className="p-8 mb-8 relative overflow-hidden bg-gradient-to-br from-[#FFCCBC]/90 to-[#FFE4B5]/90 backdrop-blur-xl border border-[#8B4513]/20 shadow-2xl shadow-[#8B4513]/10">
         <div className="text-center">
           <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
             <CheckCircle2 className="size-12 text-green-600" />
@@ -61,7 +49,7 @@ export function Export() {
       </Card>
 
       {/* Export Options */}
-      <Card className="p-6 mb-8">
+      <Card className="p-6 mb-8 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
         <h2 className="text-xl font-semibold text-[#8B4513] mb-6">
           Download Filing Documents
         </h2>
@@ -122,7 +110,7 @@ export function Export() {
       </Card>
 
       {/* Summary Preview */}
-      <Card className="p-6 mb-8">
+      <Card className="p-6 mb-8 bg-white/80 backdrop-blur-md shadow-lg border-white/20">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-[#8B4513]">
             Summary Preview - February 2026
@@ -182,7 +170,7 @@ export function Export() {
       </Card>
 
       {/* Next Steps */}
-      <Card className="p-6 bg-gradient-to-r from-[#8B4513] to-[#723A0F] text-white">
+      <Card className="p-6 bg-gradient-to-br from-[#8B4513] to-[#8B4513]/90 text-white shadow-2xl shadow-[#8B4513]/20 border border-[#8B4513]/50 relative overflow-hidden">
         <h2 className="text-xl font-semibold mb-4">Next Steps</h2>
         <div className="space-y-3">
           <div className="flex items-start gap-3">
