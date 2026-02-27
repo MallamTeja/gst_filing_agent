@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import UploadSection from '../components/UploadSection';
-import ManualEntrySection from '../components/ManualEntrySection';
+import CombinedInvoiceSection from '../components/CombinedInvoiceSection';
 import RecentInvoices from '../components/RecentInvoices';
 import ProfileCard from '../components/ProfileCard';
 import '../styles/dashboard.css';
@@ -51,6 +50,10 @@ const Dashboard = () => {
     alert("GST Draft Generated Successfully");
   };
 
+  const handleProfileClick = () => {
+    setActiveSection('profile');
+  };
+
   const quickStats = [
     { label: 'Total Invoices Processed', value: '247', change: '+12%' },
     { label: 'Pending Drafts', value: '8', change: '-3%' },
@@ -60,61 +63,39 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Navbar />
+      <Navbar onProfileClick={handleProfileClick} />
       <div className="dashboard-content">
         <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
         <main className="main-content">
-          <div className="stats-grid">
-            {quickStats.map((stat, index) => (
-              <div key={index} className="stat-card">
-                <h3>{stat.label}</h3>
-                <div className="stat-value">{stat.value}</div>
-                <div className="stat-change">{stat.change}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="content-grid">
-            <div className="left-section">
-              {activeSection === 'upload' && (
-                <UploadSection
-                  selectedImage={selectedImage}
-                  onImageUpload={handleImageUpload}
-                  onGenerate={handleUploadGenerate}
-                />
-              )}
-              {activeSection === 'manual' && (
-                <ManualEntrySection
-                  formData={manualFormData}
-                  onInputChange={handleManualInputChange}
-                  onGenerate={handleManualGenerate}
-                />
-              )}
-              {activeSection === 'dashboard' && (
-                <>
-                  <div className="section-toggle">
-                    <button 
-                      className="toggle-btn active"
-                      onClick={() => setActiveSection('upload')}
-                    >
-                      Upload Invoice
-                    </button>
-                    <button 
-                      className="toggle-btn"
-                      onClick={() => setActiveSection('manual')}
-                    >
-                      Manual Entry
-                    </button>
+          {activeSection === 'dashboard' && (
+            <>
+              <div className="stats-grid">
+                {quickStats.map((stat, index) => (
+                  <div key={index} className="stat-card">
+                    <h3>{stat.label}</h3>
+                    <div className="stat-value">{stat.value}</div>
+                    <div className="stat-change">{stat.change}</div>
                   </div>
-                  <RecentInvoices />
-                </>
-              )}
-              {activeSection === 'history' && <RecentInvoices />}
-            </div>
-            <div className="right-section">
-              <ProfileCard />
-            </div>
-          </div>
+                ))}
+              </div>
+              <div className="dashboard-overview">
+                <RecentInvoices />
+              </div>
+            </>
+          )}
+          
+          {activeSection === 'upload' && (
+            <CombinedInvoiceSection
+              selectedImage={selectedImage}
+              onImageUpload={handleImageUpload}
+              onUploadGenerate={handleUploadGenerate}
+              manualFormData={manualFormData}
+              onManualInputChange={handleManualInputChange}
+              onManualGenerate={handleManualGenerate}
+            />
+          )}
+          
+          {activeSection === 'profile' && <ProfileCard />}
         </main>
       </div>
     </div>

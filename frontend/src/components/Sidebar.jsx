@@ -3,11 +3,7 @@ import React from 'react';
 const Sidebar = ({ activeSection, setActiveSection }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-    { id: 'upload', label: 'Upload Invoice', icon: '📤' },
-    { id: 'manual', label: 'Manual Entry', icon: '✏️' },
-    { id: 'history', label: 'Invoice History', icon: '📋' },
-    { id: 'profile', label: 'Profile', icon: '👤' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' }
+    { id: 'upload', label: 'Add Invoice', icon: '📤' }
   ];
 
   return (
