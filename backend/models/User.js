@@ -1,16 +1,24 @@
-import mongoose from 'mongoose';
+import pool from '../db.js';
 
-const userSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true,
+const User = {
+    async findByEmail(email) {
+        const [rows] = await pool.execute('SELECT * FROM users WHERE email = ?', [email]);
+        return rows.length ? rows[0] : null;
     },
-    password_hash: {
-        type: String,
-        required: true,
-    }
-}, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
+    async findById(id) {
+        const [rows] = await pool.execute('SELECT * FROM users WHERE id = ?', [id]);
+        return rows.length ? rows[0] : null;
+    },
+
+    async create(userData) {
+        const { email, password_hash } = userData;
+        const [result] = await pool.execute(
+            'INSERT INTO users (email, password_hash) VALUES (?, ?)',
+            [email, password_hash]
+        );
+        return this.findById(result.insertId);
+    }
+};
+
 export default User;

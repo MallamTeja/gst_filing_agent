@@ -1,29 +1,26 @@
-import mongoose from 'mongoose';
+import pool from '../db.js';
 
-const returnRequestSchema = new mongoose.Schema({
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+const ReturnRequest = {
+    async findById(id) {
+        const [rows] = await pool.execute('SELECT * FROM return_requests WHERE id = ?', [id]);
+        return rows.length ? rows[0] : null;
     },
-    business_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'BusinessProfile',
-        required: true
+
+    async updateResult(id, status, jsonResult) {
+        await pool.execute(
+            'UPDATE return_requests SET status = ?, json_result = ? WHERE id = ?',
+            [status, JSON.stringify(jsonResult), id]
+        );
     },
-    ret_period: {
-        type: String, // e.g., '012024'
-        required: true
-    },
-    status: {
-        type: String,
-        enum: ['draft', 'generated'],
-        default: 'draft'
-    },
-    json_result: {
-        type: mongoose.Schema.Types.Mixed // For storing the final GST JSON structure
+
+    async create(data) {
+        const { user_id, business_id, ret_period } = data;
+        const [result] = await pool.execute(
+            'INSERT INTO return_requests (user_id, business_id, ret_period) VALUES (?, ?, ?)',
+            [user_id, business_id, ret_period]
+        );
+        return this.findById(result.insertId);
     }
-}, { timestamps: true });
+};
 
-const ReturnRequest = mongoose.model('ReturnRequest', returnRequestSchema);
 export default ReturnRequest;

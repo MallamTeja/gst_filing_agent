@@ -22,7 +22,7 @@ router.post('/:id/generate-json', async (req, res) => {
         }
 
         const businessProfile = await BusinessProfile.findById(returnReq.business_id);
-        const invoices = await Invoice.find({ business_id: returnReq.business_id });
+        const invoices = await Invoice.findByBusinessId(returnReq.business_id);
 
         // Extract relevant data for the Gemini prompt
         const businessData = {
@@ -46,9 +46,7 @@ router.post('/:id/generate-json', async (req, res) => {
         const generatedJson = await generateGSTReturnJSON(businessData, invoicesData);
 
         // Save the result back to the DB
-        returnReq.json_result = generatedJson;
-        returnReq.status = 'generated';
-        await returnReq.save();
+        await ReturnRequest.updateResult(returnReq.id, 'generated', generatedJson);
 
         res.status(200).json({ status: "generated", json_result: generatedJson });
     } catch (error) {

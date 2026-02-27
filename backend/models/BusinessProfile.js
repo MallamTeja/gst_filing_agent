@@ -1,25 +1,24 @@
-import mongoose from 'mongoose';
+import pool from '../db.js';
 
-const businessProfileSchema = new mongoose.Schema({
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+const BusinessProfile = {
+    async findById(id) {
+        const [rows] = await pool.execute('SELECT * FROM business_profiles WHERE id = ?', [id]);
+        return rows.length ? rows[0] : null;
     },
-    gstin: {
-        type: String,
-        required: true,
-        unique: true
+
+    async findByUserId(userId) {
+        const [rows] = await pool.execute('SELECT * FROM business_profiles WHERE user_id = ?', [userId]);
+        return rows;
     },
-    legal_name: {
-        type: String,
-        required: true
-    },
-    state_code: {
-        type: String,
-        required: true
+
+    async create(data) {
+        const { user_id, gstin, legal_name, state_code } = data;
+        const [result] = await pool.execute(
+            'INSERT INTO business_profiles (user_id, gstin, legal_name, state_code) VALUES (?, ?, ?, ?)',
+            [user_id, gstin, legal_name, state_code]
+        );
+        return this.findById(result.insertId);
     }
-}, { timestamps: true });
+};
 
-const BusinessProfile = mongoose.model('BusinessProfile', businessProfileSchema);
 export default BusinessProfile;
